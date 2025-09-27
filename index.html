@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דשבורד ניתוח אקלים בית ספרי</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>דשבורד ניתוח אקלים בית ספרי</h1>
+            <p>נתונים מתוך שאלון תלמידים - מאי 2024</p>
+            <p>סה"כ משיבים: 153 תלמידים (75 תלמידים, 78 תלמידות)</p>
+        </div>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">3.65</div>
+                <div class="stat-label">ממוצע אקלים בטוח</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1.14</div>
+                <div class="stat-label">רמת אלימות (נמוכה = טובה)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3.33</div>
+                <div class="stat-label">תחושת מוגנות</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.76</div>
+                <div class="stat-label">התנהגויות סיכון</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('safe-climate')">אקלים בטוח</button>
+            <button class="tab" onclick="showTab('violence')">אלימות</button>
+            <button class="tab" onclick="showTab('protection')">מוגנות</button>
+        </div>
+
+        <div id="safe-climate" class="tab-content active">
+            <div class="section">
+                <h2 class="section-title">מדדי אקלים בטוח</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-title">יחסים חיוביים בין תלמידים לחבריהם</div>
+                        <div class="metric-score score-good">3.86</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 77%; background: #f39c12;"></div>
+                        </div>
+                        <p><strong>מצב טוב</strong> - קרבה ושייכות חברתית ברמה גבוהה</p>
+                        <div class="gender-comparison">
+                            <div class="gender-card male-card">
+                                <strong>תלמידים</strong><br>4.03
+                            </div>
+                            <div class="gender-card female-card">
+                                <strong>תלמידות</strong><br>3.70
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 54.2% מרגישים קשר חזק עם חברים, אך רק 20.9% מרגישים שייכות גבוהה לכיתה - צריך לחזק את הקבוצתיות הכיתתית
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">מסוגלות עצמית</div>
+                        <div class="metric-score score-good">3.45</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 69%; background: #f39c12;"></div>
+                        </div>
+                        <p><strong>מצב בינוני-טוב</strong> - יכולת התמודדות עם אתגרים</p>
+                        <div class="gender-comparison">
+                            <div class="gender-card male-card">
+                                <strong>תלמידים</strong><br>3.62
+                            </div>
+                            <div class="gender-card female-card">
+                                <strong>תלמידות</strong><br>3.29
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 35.9% מרגישים בדידות לפעמים, ו-47% מתקשים להתרכז בלמידה - דרושה תמיכה רגשית מתמשכת
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="safeClimateChart"></canvas>
+                </div>
+                
+                <div class="insights">
+                    <h3>תובנות עיקריות:</h3>
+                    <div class="insight-item">התלמידים מדווחים על יחסים חיוביים יותר עם חברים (4.03 מול 3.70)</div>
+                    <div class="insight-item">התלמידים מדווחים על מסוגלות עצמית גבוהה יותר (3.62 מול 3.29)</div>
+                    <div class="insight-item">58.8% מהתלמידים מרגישים שייכות גבוהה לכיתה</div>
+                    <div class="insight-item">צריך לחזק את תחושת השייכות בקרב התלמידות</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="violence" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">מדדי אלימות במוסד</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-title">אלימות כללית</div>
+                        <div class="metric-score score-excellent">1.14</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 14%; background: #27ae60;"></div>
+                        </div>
+                        <p><strong>מצב מצוין</strong> - רמה נמוכה מאוד של אלימות פיסית ומילולית</p>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> רק 5.2% חוו איומים, ו-9.2% חוו אלימות פיסית
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">התנהלות ופגיעה ברשת</div>
+                        <div class="metric-score score-excellent">1.08</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 8%; background: #27ae60;"></div>
+                        </div>
+                        <p><strong>מצב מצוין</strong> - כמעט ללא פגיעה ברשתות חברתיות</p>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> רק 4.6% מדווחים על הפצת תמונות מעליבות - שליטה טובה בסביבה הדיגיטלית
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">הטרדה מינית</div>
+                        <div class="metric-score score-excellent">1.07</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 7%; background: #27ae60;"></div>
+                        </div>
+                        <p><strong>מצב מצוין</strong> - רמה נמוכה מאוד של הטרדות מיניות</p>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> פחות מ-6% מדווחים על הטרדות מיניות - סביבה בטוחה יחסית מבחינת התנהגויות מיניות לא רצויות
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">התנהגויות סיכון</div>
+                        <div class="metric-score score-needs-attention">2.76</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%; background: #e74c3c;"></div>
+                        </div>
+                        <p><strong>דורש תשומת לב</strong> - בעיקר עישון בקרב התלמידים</p>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 62.7% מדווחים על שימוש בסיגריות/נרגילות בשכבה - נדרשת התערבות מיידית במניעת עישון
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="violenceChart"></canvas>
+                </div>
+                
+                <div class="insights">
+                    <h3>תובנות עיקריות:</h3>
+                    <div class="insight-item">רמת האלימות הפיסית והמילולית נמוכה מאוד - מצב מצוין</div>
+                    <div class="insight-item">כמעט אין דיווחים על פגיעה ברשתות חברתיות</div>
+                    <div class="insight-item">הטרדות מיניות ברמה נמוכה מאוד</div>
+                    <div class="insight-item">62.7% מהתלמידים מדווחים על שימוש בסיגריות/נרגילות בשכבה - דורש התערבות</div>
+                    <div class="insight-item">התלמידים מדווחים על התנהגויות סיכון פחות מהתלמידות</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="protection" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">תחושת מוגנות ומסוגלות</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-title">מסוגלות המורים לטפל</div>
+                        <div class="metric-score score-good">3.00</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%; background: #f39c12;"></div>
+                        </div>
+                        <p><strong>מצב בינוני</strong> - צריך לחזק את תפיסת התלמידים כלפי המורים</p>
+                        <div class="gender-comparison">
+                            <div class="gender-card male-card">
+                                <strong>תלמידים</strong><br>3.11
+                            </div>
+                            <div class="gender-card female-card">
+                                <strong>תלמידות</strong><br>2.89
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 49.6% מרגישים שהמורים מתייחסים אליהם בכבוד, אך רק 35.5% מרגישים שצוות בית הספר עוזר להם - צריך לחזק מעורבות אישית
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">פנייה לעזרה</div>
+                        <div class="metric-score score-good">3.37</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 67%; background: #f39c12;"></div>
+                        </div>
+                        <p><strong>מצב בינוני-טוב</strong> - רוב התלמידים יודעים למי לפנות</p>
+                        <div class="gender-comparison">
+                            <div class="gender-card male-card">
+                                <strong>תלמידים</strong><br>3.53
+                            </div>
+                            <div class="gender-card female-card">
+                                <strong>תלמידות</strong><br>3.21
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 52.9% יודעים למי לפנות לעזרה, אך בפועל רק 13.7% פונים למחנכ/ת בעת צורך - פער בין ידע לפעולה
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-title">תחושת מוגנות</div>
+                        <div class="metric-score score-good">3.61</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 72%; background: #f39c12;"></div>
+                        </div>
+                        <p><strong>מצב טוב</strong> - רוב התלמידים מרגישים בטוחים בבית הספר</p>
+                        <div class="gender-comparison">
+                            <div class="gender-card male-card">
+                                <strong>תלמידים</strong><br>3.71
+                            </div>
+                            <div class="gender-card female-card">
+                                <strong>תלמידות</strong><br>3.52
+                            </div>
+                        </div>
+                        <div class="insight-box">
+                            <strong>תובנה מרכזית:</strong> 70% מרגישים בטוחים בבית הספר, ו-69.2% מרגישים שההפסקות בטוחות - מצב חיובי יחסית עם מקום לשיפור
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="protectionChart"></canvas>
+                </div>
+                
+                <div class="section">
+                    <h3>דרכי התמודדות כאשר פוגעים בתלמידים:</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-title">מתמודד בכוחות עצמי</div>
+                            <div class="metric-score">57.5%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">פונה לעזרת בן משפחה</div>
+                            <div class="metric-score">37.9%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">פונה לעזרה של תלמידים</div>
+                            <div class="metric-score">30.1%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-title">פונה למחנכ/ת</div>
+                            <div class="metric-score">13.7%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insights">
+                    <h3>תובנות עיקריות:</h3>
+                    <div class="insight-item">התלמידים מרגישים מוגנים יותר ובטוחים יותר במסוגלות המורים</div>
+                    <div class="insight-item">רוב התלמידים מעדיפים להתמודד בכוחות עצמם במקום לפנות לעזרה</div>
+                    <div class="insight-item">פנייה נמוכה למחנכים - צריך לחזק את הקשר</div>
+                    <div class="insight-item">69.2% מרגישים בטוחים בהפסקות</div>
+                    <div class="insight-item">צריך לחזק את הביטחון של התלמידות בסביבה הבית ספרית</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
